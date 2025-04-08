@@ -8,5 +8,8 @@ class AppConfig(AppConfig):
 
 def final():
     print("Django setup completed")
+    name = "hello".upper()
+    print(name)
+    
 
 final()

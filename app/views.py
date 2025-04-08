@@ -10,11 +10,13 @@ from .models import User
 @csrf_exempt
 def login(request):
     if request.method == "POST":
-        email = request.POST["email"]
+        email = request.POST["email"].lower()
         password = request.POST["password"]
         print(email)
         print(password)
         exists = User.objects.filter(email = email).exists()
+        print(exists)
+        print(email)
         if(exists):
             currentUser = User.objects.get(email = email)
             if(currentUser.password == password): 
@@ -27,12 +29,13 @@ def login(request):
         return JsonResponse({'msg' : "Method not Allowed", 'status': 405}, safe=False)
 
 
-   
+@csrf_exempt  
 def register(request):
+    print("We Are in the Register poll")
     if request.method == "POST":
-        email = request.POST["email"]
+        email = request.POST["email"].lower()
         password = request.POST["password"]
-        username = request.POST["username"]
+        username = request.POST["username"].lower()
         exists = User.objects.filter(email = email).exists()
         if exists:
             return JsonResponse({'msg':'User Already Exist', 'status':409})
