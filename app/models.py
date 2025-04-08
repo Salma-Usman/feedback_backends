@@ -4,7 +4,10 @@ from django.db import models
 
 class User(models.Model):
     email = models.EmailField()
+    username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
+    def __str__(self):
+        return f"email: {self.email}, password: {self.password}, username: {self.username}"
 
 class CourseFeedback(models.Model):
     course_code = models.CharField(max_length=50)
@@ -13,7 +16,7 @@ class CourseFeedback(models.Model):
     material_structure_clarity = models.IntegerField(default=1)
     workload_manageability =  models.IntegerField(default=1)
     instructor_quality = models.IntegerField(default=1)
-    instructor_clarity = models.IntergerField(default = 1)
+    instructor_clarity = models.IntegerField(default = 1)
     instructor_responsive = models.IntegerField(default = 1)
     instructor_engangement = models.IntegerField(default=1)
     resources_availabilty = models.IntegerField(default=1)
