@@ -18,9 +18,9 @@ class CourseFeedback(models.Model):
     instructor_quality = models.IntegerField(default=1)
     instructor_clarity = models.IntegerField(default = 1)
     instructor_responsive = models.IntegerField(default = 1)
-    instructor_engangement = models.IntegerField(default=1)
+    instructor_engagement = models.IntegerField(default=1)
     resources_availabilty = models.IntegerField(default=1)
     assinment_impact = models.IntegerField(default=1)
-    course_recommendation = models.BooleanField(default=False)
+    course_recommendation = models.CharField(max_length=10)
     suggestion = models.CharField(max_length=100)
 
